@@ -1,4 +1,5 @@
-# Fintech Review Analytics
+# Fintech Review Analytics]
+]
 
 ## Setup
 1. Clone the repository
