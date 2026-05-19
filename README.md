@@ -50,13 +50,47 @@ The goal is to extract actionable insights about user satisfaction, pain points,
 - Generated visualisations: sentiment distribution (stacked bar chart), average sentiment by rating (bar chart), theme frequency per bank.
 - Saved enriched dataset as `reviews_with_sentiment.csv`.
 
-## Next Steps (Task 3 & 4)
-- Store enriched data in **PostgreSQL** (database design, insertion).
-- Create **final visualisations** and write a Medium‑style report with actionable recommendations for each bank.
+## Task 3 – PostgreSQL Database
+
+### Schema Design
+- **Database name:** `bank_reviews`
+- **Tables:**
+  - `banks`: bank_id (PK), bank_name, app_name
+  - `reviews`: review_id (PK), bank_id (FK), review_text, rating, review_date, sentiment_label, sentiment_score, identified_theme, source
+
+The SQL schema is available in `sql/schema.sql`.
+
+### Data Insertion
+The Python script `src/populate_db.py` uses `psycopg2` and `sqlalchemy` to:
+- Create the database (if not exists)
+- Create the tables
+- Insert cleaned and enriched review data
+
+Total reviews inserted: **1134**
+
+### Verification Results
+- **Reviews per bank:**
+  - Commercial Bank of Ethiopia: 376
+  - Dashen Bank: 380
+  - Bank of Abyssinia: 378
+- **Average rating per bank:**
+  - Commercial Bank of Ethiopia: 3.92
+  - Dashen Bank: 3.94
+  - Bank of Abyssinia: 3.23
+- **Missing data:** 0 rows with null review text or rating.
+
+All integrity checks passed.
+
+### Setup Instructions (for running the script)
+1. Install PostgreSQL locally.
+2. Create a database `bank_reviews` (the script can create it).
+3. Update the database connection parameters in `src/populate_db.py` (user, password, host, port).
+4. Run `python src/populate_db.py`.
+5. Verify with `python src/verify_db.py` or a notebook cell.
 
 ## Branches
 - `main` – stable, completed work (Tasks 1 & 2 merged).
 - `task-1` – scraping and preprocessing.
 - `task-2` – sentiment and thematic analysis.
-- (future) `task-3` – PostgreSQL integration.
-- (future) `task-4` – final report and dashboards.
+- `task-3` – PostgreSQL integration.
+-  `task-4` – final report and dashboards.
