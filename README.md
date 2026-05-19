@@ -88,6 +88,26 @@ All integrity checks passed.
 4. Run `python src/populate_db.py`.
 5. Verify with `python src/verify_db.py` or a notebook cell.
 
+## Task 4 – Insights and Recommendations
+
+### Key Findings
+- **Bank of Abyssinia (BOA)** has the lowest average rating (3.23) and highest proportion of negative reviews. The keyword "worst" appears frequently.
+- **Commercial Bank of Ethiopia (CBE)** and **Dashen Bank** have higher ratings (~3.9) and positive keywords ("good", "nice", "best").
+
+### Visualizations
+- Sentiment distribution stacked bar chart  
+- Rating distribution boxplots per bank  
+- Top 10 keywords per bank (horizontal bar charts)
+
+### Recommendations
+- **CBE:** Improve update stability; add fingerprint login.
+- **BOA:** Fix critical crashes; improve OTP reliability.
+- **Dashen:** Unify branding (remove "amole"); optimise transaction speed.
+
+### Deliverable
+- Final report (Medium blog style, PDF) with up to 10 pages and 10 plots.
+- Notebook `insights_recommendations.ipynb` containing all final visualizations and analysis.
+
 ## Branches
 - `main` – stable, completed work (Tasks 1 & 2 merged).
 - `task-1` – scraping and preprocessing.
